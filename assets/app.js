@@ -3,8 +3,11 @@ let playing = true
 const gameOver = () => {
     playing = false
     gameOverScreen.style.display = "flex";
+    chrono.style.display = "none"
     timeline_1.pause()
     timeline_2.pause()
+    bot3_anim.pause()
+    bot4_anim.pause()
 }
 
 const movePlayer = (e) => {
@@ -12,28 +15,28 @@ const movePlayer = (e) => {
         switch (e.keyCode) {
             case 38:
                 gsap.to("#player", {
-                    y: "-=100",
+                    y: "-=50",
                     rotate: "0_short",
                 })
                 break;
                 
             case 40:
                 gsap.to("#player", {
-                    y: "+=100",
+                    y: "+=50",
                     rotate: "180_short",
                 })
                 break;
     
             case 37:
                 gsap.to("#player", {
-                    x: "-=100",
+                    x: "-=50",
                     rotate: "-90_short",
                 })
                 break;
     
             case 39:
                 gsap.to("#player", {
-                    x: "+=100",
+                    x: "+=50",
                     rotate: "90_short"
                 })
                 break;
@@ -58,7 +61,7 @@ const checkCollision = (div1, div2) => {
     );
   }
 
-function checkEnnemies() {
+let checkEnnemies = () => {
     let bots = document.querySelectorAll(".bot")
 
     bots.forEach((e) => {
@@ -66,21 +69,41 @@ function checkEnnemies() {
         gameOver();
         }
     })
-}
 
-let checkWin = () => {
     if (checkCollision(player, treasure)) {
-        let gameOverDiv = document.getElementById("game-over");
-        gameOverDiv.innerHTML = "Bravo";
-        gameOverScreen.style.backgroundColor = "rgba(52, 165, 29, 0.582)";
-        gameOverDiv.style.backgroundColor = "rgb(13, 153, 43)"
-        
-        gameOver();
-    }
+      let gameOverDiv = document.getElementById("game-over");
+      gameOverDiv.innerHTML = "YOU ESCAPED !";
+      gameOverScreen.style.backgroundColor = "rgba(52, 165, 29, 0.582)";
+      gameOverDiv.style.backgroundColor = "rgb(13, 153, 43)"
+      
+      gameOver();
+  }
+
+  if (checkCollision(player, fake_treasure)) {
+    gameOver()
+  }
+
+  if (checkCollision(player, gem)) {
+    countdown += 10
+    gem.style.display = "none"
+  }
 }
 
 setInterval(checkEnnemies, 500)
-setInterval(checkWin, 500)
+
+let countdown = Math.floor(Math.random() * 19) + 6;
+chrono.innerHTML = countdown;
+
+let counter = () => {
+  countdown -= 1;
+  chrono.innerHTML = countdown;
+  if (countdown == 0) {
+    gameOver()
+  }
+}
+setInterval(counter, 1000)
+
+
 
 let timeline_1 = gsap.timeline({ repeat: -1 })
 
@@ -93,7 +116,7 @@ timeline_1.to("#bot_1", {
   });
 timeline_1.to("#bot_1", {
     duration: 5,
-    y: 275,
+    y: 250,
   });
 timeline_1.to("#bot_1", {
     rotate: 0
@@ -121,3 +144,34 @@ timeline_2.to("#bot_2", {
     y: 0,
     x: 0
   });
+
+let bot3_anim = gsap.to("#bot_3", {
+  duration: 10,
+  rotate: -270,
+  motionPath: {
+    path: "#path_3",
+    align: "#path_3",
+    autoRotate: 90,
+    alignOrigin: [0.5, 0.5],
+  },
+  ease: Linear.easeNone,
+  repeat: -1
+});
+
+let bot4_anim = gsap.to("#bot_4", {
+  duration: 8,
+  
+  motionPath: {
+    path: "#path_4",
+    align: "#path_4",
+    autoRotate: 90,
+    alignOrigin: [0.5, 0.5],
+    start: 2,
+  },
+  ease: Linear.easeNone,
+  repeat: -1
+});
+
+
+gem.style.top = Math.floor(Math.random() * 90) + 1 + "%";
+gem.style.left = Math.floor(Math.random() * 90) + 1 + "%";
