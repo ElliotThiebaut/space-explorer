@@ -1,0 +1,80 @@
+/* CSS */
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: lightblue;
+}
+
+#player{
+    width: 55px;
+    height: 60px;
+    position: absolute;
+    z-index: 3;
+    top: 5%;
+    left: 10%;
+}
+
+
+.bot{
+    width: 60px;
+    height: 75px;
+    position: absolute;
+}
+#bot_1{
+    top: 50%;
+    left: 15%;
+}
+#bot_2{
+    top: 30%;
+    left: 80%;
+}
+
+
+.island{
+    width: 190px;
+    height: 200px;
+    position: absolute;
+}
+#island_1{
+    top: 60%;
+    left: 60%;
+}
+#island_2{
+    top: 10%;
+    left: 30%;
+}
+#island_3{
+    top: 70%;
+    left: 20%;
+}
+
+
+#gameOverScreen{
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(206, 28, 22, 0.582);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#game-over{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(167, 16, 16);
+    padding: 5%;
+    width: 30%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+#treasure{
+    width: 60px;
+    height: 75px;
+    position: absolute;
+    z-index: 2;
+    top: 68%;
+    left: 61%;
+}
