@@ -13,7 +13,7 @@ body{
     position: absolute;
     z-index: 3;
     top: 5%;
-    left: 10%;
+    left: 5%;
 }
 
 
@@ -85,7 +85,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-#game-over{
+#game_over_container{
     font-family: 'Poppins', sans-serif;
     background-color: rgb(167, 16, 16);
     padding: 5%;
@@ -96,21 +96,11 @@ body{
     font-size: 2em;
 }
 
-#treasure{
+.portals{
     width: 150px;
     height: 185px;
     position: absolute;
     z-index: 2;
-    top: 68%;
-    left: 61%;
-}
-#fake_treasure{
-    width: 150px;
-    height: 185px;
-    position: absolute;
-    z-index: 2;
-    top: 24%;
-    left: 81%;
 }
 
 #chrono{
@@ -131,4 +121,55 @@ body{
     top: 20%;
     left: 55%;
     z-index: 2;
+}
+
+#control_screen{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    line-height: 50px;
+}
+
+#startButton{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+#gameOverButton{
+    background-color: transparent;
+    color: white;
+    font-family: 'Popins', sans-serif;
+    border: none;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    padding: 5px;
+    padding-top: 10px;
+    font-size: 0.5em;
+    font-weight: 300;
+}
+
+#scoreDiv{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    background-color: rgb(41, 41, 41);
+    color: rgb(139, 139, 139);
+    font-family: 'Popins', sans-serif;
+    font-size: 2em;
+    font-weight: 600;
+    z-index: 50;
+    padding: 10px 20px;
+    margin: auto;
+    display: none;
+    text-align: center;
 }

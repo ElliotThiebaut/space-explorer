@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pirate Game</title>
+    <title>Space Explorer</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
 
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/anim.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/MotionPathPlugin.min.js"></script>
 
@@ -16,16 +18,21 @@
 <body>
     <body>
         <div id="gameOverScreen">
-            <div id="game-over">GAME OVER</div>
+            <div id="game_over_container">
+                <p id="gameOverText">GAME OVER</p>
+                <button id="gameOverButton" onclick="startGame()">AGAIN ?</button>
+            </div>
+            
         </div>
         <div id="chrono"></div>
+        <div id="scoreDiv"></div>
         <img src="assets/img/player.png" alt="player" id="player">
         <img src="assets/img/bot.png" alt="bot" id="bot_1" class="bot">
         <img src="assets/img/bot.png" alt="bot" id="bot_2" class="bot">
         <img src="assets/img/bot.png" alt="bot" id="bot_3" class="bot">
         <img src="assets/img/bot.png" alt="bot" id="bot_4" class="bot">
-        <img src="assets/img/portal.png" alt="treasure" id="treasure">
-        <img src="assets/img/fake_portal.png" alt="treasure" id="fake_treasure">
+        <img src="assets/img/portal.png" alt="portals" class="portals">
+        <img src="assets/img/portal.png" alt="portals" class="portals">
         <img src="assets/img/gem.png" alt="gem" id="gem">
         <img src="assets/img/asteroid.png" alt="island" id="island_1" class="island">
         <img src="assets/img/asteroid_2.png" alt="island" id="island_2" class="island">
@@ -39,6 +46,224 @@
         <svg width="913" height="406" viewBox="0 0 913 406" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg_2">
             <path id="path_4" d="M474 208C403.6 248.8 191.333 208.333 94 183C-34 155.877 -28 335 100 386C228 437 669 374 810 313C922.8 264.2 919.667 160 904 114C879 69.6667 800.8 -14.4 688 4C547 27 562 157 474 208Z"/>
         </svg>
+
+        <div id="starter_screen">
+            <div class='wrap'>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+                <div class='tri'></div>
+              </div>
+
+            <a onclick="showControls()" class="btn-flip" data-back="Lets go !" data-front="Wanna Play ?"></a>
+        </div>
+
+        <div id="control_screen">
+            <p>Your goal is to escape</p>
+            <p>Use the arrow keys to control your ship</p>
+            <p>The portals are the only escape routes</p>
+            <p>Your fuel tank is leaking, you dont have much time before you run out</p>
+            <p>You can collect gems to refuel your tank</p>
+            <p>Some portals are corrupted, nothing good happens there</p>
+            <p>You may have no escape routes at some point, you'll juste have to accept your faith</p>
+            <a id="startButton" onclick="startGame()" class="btn-flip" data-back="Time to go..." data-front="Ready ?"></a>
+        </div>
             
             
     </body>
