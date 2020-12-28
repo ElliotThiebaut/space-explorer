@@ -10,7 +10,7 @@
 
 ### 🏠 [Homepage](https://github.com/ElliotThiebaut/space-explorer)
 
-### ✨ [Demo](Coming soon)
+### ✨ [Demo](https://elliot-space-explorer.netlify.app/)
 
 ## Author
 
