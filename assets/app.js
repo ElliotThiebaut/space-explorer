@@ -328,3 +328,7 @@ let counter = () => {
     gameOver("time")
   }
 }
+
+window.onload = (event) => {
+  loader_wrapper.style.display = "none";
+};
