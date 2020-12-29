@@ -6,7 +6,9 @@
   </a>
 </p>
 
-> A browser game made with plain JavaScript, CSS and of course HTML. You control a rocket that tries to escape threw portals to the next level, with ennemies and asteroides, adn corrupt portals blocking the way. Play along with the awsome Fatser Than Light soundtrack blasting threw your ears !
+> A browser game made with plain JavaScript, CSS and of course HTML. 
+> You control a rocket that tries to escape threw portals to the next level, with ennemies, asteroides, and corrupt portals blocking the way.
+> Play along with the awsome Faster Than Light soundtrack blasting threw your ears !
 
 ### 🏠 [Homepage](https://github.com/ElliotThiebaut/space-explorer)
 
