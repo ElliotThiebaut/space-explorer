@@ -389,6 +389,7 @@ window.onload = (event) => {
 };
 
 const showResults = () => {
+	highScoreUl.textContent = '';
 	highScoreList.style.display = 'block';
 	db.collection('players').orderBy('score', 'desc').get().then(function(querySnapshot) {
 		querySnapshot.forEach(function(doc) {
