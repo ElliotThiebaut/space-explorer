@@ -25,8 +25,15 @@
             </div>
             
         </div>
+
+        <div id="highScoreList" onclick="closeHighScoreList()">
+            <ul id="highScoreUl">
+            </ul>
+        </div>
+
         <div id="chrono"></div>
         <div id="scoreDiv"></div>
+        <a id="highScoreButton" onclick="showResults()">High Score List</a>
         <img src="assets/img/player.png" alt="player" id="player">
         <img src="assets/img/bot.png" alt="bot" id="bot_1" class="bot">
         <img src="assets/img/bot.png" alt="bot" id="bot_2" class="bot">
@@ -263,14 +270,26 @@
             <p>You can collect gems to refuel your tank</p>
             <p>Some portals are corrupted, nothing good happens there</p>
             <p>You may have no escape routes at some point, you'll juste have to accept your faith</p>
-            <a id="startButton" onclick="startGame()" class="btn-flip" data-back="Time to go..." data-front="Ready ?"></a>
+            <input id="playerName" type="text" placeholder="Enter your name">
+            <a id="startButton" onclick="startFirstGame()" class="btn-flip" data-back="Time to go..." data-front="Ready ?"></a>
         </div>
             
 
         <div id="loader_wrapper">
             <div class="loading"></div>
         </div>
-            
+
+
+
+
+
+
+
+        <!-- FIREBASE SDK -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
     </body>
 
 

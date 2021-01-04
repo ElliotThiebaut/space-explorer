@@ -173,3 +173,58 @@ body{
     display: none;
     text-align: center;
 }
+
+#playerName{
+    margin-top: 3%;
+    padding: 1%;
+    border: none;
+    background-color: rgb(37, 37, 37);
+    color: whitesmoke;
+    font-weight: 600;
+    font-family: 'Popins', sans-serif;
+    font-size: 1em;
+    text-align: center;
+}
+
+#highScoreButton{
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    background-color: rgb(41, 41, 41);
+    color: rgb(139, 139, 139);
+    font-family: 'Popins', sans-serif;
+    padding: 10px 20px;
+    z-index: 50;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: 'Popins', sans-serif;
+    text-align: center;
+}
+
+#highScoreList{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 500;
+    margin: 0 auto;
+    height: 80vh;
+    width: 80vw;
+    overflow: auto;
+    background-color: rgb(41, 41, 41);
+    text-align: center;
+    color: rgb(194, 194, 194);
+    font-family: 'Popins', sans-serif;
+    padding: 15px;
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 75px;
+    display: none;
+}
+
+.bold-white{
+    font-weight: 500;
+    color: whitesmoke;
+}
