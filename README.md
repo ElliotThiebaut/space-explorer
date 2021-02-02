@@ -9,6 +9,7 @@
 > A browser game made with plain JavaScript, CSS and of course HTML. 
 > You control a rocket that tries to escape threw portals to the next level, with ennemies, asteroides, and corrupt portals blocking the way.
 > Play along with the awsome Faster Than Light soundtrack blasting threw your ears !
+> Compare your score to all players and become the best space explorer !
 
 ### 🏠 [Homepage](https://github.com/ElliotThiebaut/space-explorer)
 
@@ -23,7 +24,7 @@
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
+Give a ⭐️ if you lied this project!
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
