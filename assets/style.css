@@ -7,6 +7,13 @@ body{
     overflow: hidden;
 }
 
+/* utility classes */
+.bold-white{
+    font-weight: 500;
+    color: whitesmoke;
+}
+
+/* Game components */
 #player{
     width: 55px;
     height: 85px;
@@ -15,7 +22,6 @@ body{
     top: 5%;
     left: 5%;
 }
-
 
 .bot{
     width: 50px;
@@ -74,7 +80,23 @@ body{
     left: 20%;
 }
 
+.portals{
+    width: 150px;
+    height: 185px;
+    position: absolute;
+    z-index: 2;
+}
 
+#gem{
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    z-index: 2;
+}
+
+/* Game UI */
 #gameOverScreen{
     position: relative;
     z-index: 9;
@@ -95,12 +117,16 @@ body{
     font-weight: 600;
     font-size: 2em;
 }
-
-.portals{
-    width: 150px;
-    height: 185px;
-    position: absolute;
-    z-index: 2;
+#gameOverButton{
+    background-color: transparent;
+    color: white;
+    font-family: 'Popins', sans-serif;
+    border: none;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    padding: 5px;
+    padding-top: 10px;
+    font-size: 0.5em;
+    font-weight: 300;
 }
 
 #chrono{
@@ -114,48 +140,49 @@ body{
     color: white;
 }
 
-#gem{
-    width: 30px;
-    height: 25px;
+#highScoreButton{
     position: absolute;
-    top: 20%;
-    left: 55%;
-    z-index: 2;
+    bottom: 2%;
+    right: 2%;
+    background-color: rgb(41, 41, 41);
+    color: rgb(139, 139, 139);
+    font-family: 'Popins', sans-serif;
+    padding: 10px 20px;
+    z-index: 50;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: 'Popins', sans-serif;
+    text-align: center;
 }
-
-#control_screen{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0%;
-    left: 0%;
+#highScoreList{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 500;
+    margin: 0 auto;
+    height: 80vh;
+    width: 80vw;
+    overflow: auto;
+    background-color: rgb(41, 41, 41);
+    text-align: center;
+    color: rgb(194, 194, 194);
+    font-family: 'Popins', sans-serif;
+    padding: 15px;
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 75px;
     display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 100;
-    background-color: black;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    line-height: 50px;
 }
 
+
+/* Menu UI */
 #startButton{
     width: 100%;
     position: absolute;
     bottom: 0;
-}
-
-#gameOverButton{
-    background-color: transparent;
-    color: white;
-    font-family: 'Popins', sans-serif;
-    border: none;
-    border-bottom: 2px solid rgb(255, 255, 255);
-    padding: 5px;
-    padding-top: 10px;
-    font-size: 0.5em;
-    font-weight: 300;
 }
 
 #scoreDiv{
@@ -186,45 +213,19 @@ body{
     text-align: center;
 }
 
-#highScoreButton{
+#control_screen{
+    height: 100%;
+    width: 100%;
     position: absolute;
-    bottom: 2%;
-    right: 2%;
-    background-color: rgb(41, 41, 41);
-    color: rgb(139, 139, 139);
-    font-family: 'Popins', sans-serif;
-    padding: 10px 20px;
-    z-index: 50;
-    font-size: 1.5em;
-    cursor: pointer;
-    font-weight: 500;
-    font-family: 'Popins', sans-serif;
-    text-align: center;
-}
-
-#highScoreList{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 500;
-    margin: 0 auto;
-    height: 80vh;
-    width: 80vw;
-    overflow: auto;
-    background-color: rgb(41, 41, 41);
-    text-align: center;
-    color: rgb(194, 194, 194);
-    font-family: 'Popins', sans-serif;
-    padding: 15px;
-    font-size: 2em;
-    font-weight: 400;
-    line-height: 75px;
+    top: 0%;
+    left: 0%;
     display: none;
-}
-
-.bold-white{
-    font-weight: 500;
-    color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    line-height: 50px;
 }

@@ -1,4 +1,4 @@
-// Your web app's Firebase configuration
+// Firebase configuration
 var firebaseConfig = {
 	apiKey: 'AIzaSyDJg4Fe8yrAO3wNa-8Y29spc9_uHRxLqvs',
 	authDomain: 'space-explorer-e3e10.firebaseapp.com',
@@ -12,25 +12,31 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
+// Variable definitions
 let playerPseudo = '';
+let score = 0;
+let clockInterval;
+let ennemiesInterval;
+let playing = false;
 
+// Gsap animation def
 let timeline_1 = gsap.timeline({ repeat: -1 });
 let timeline_2 = gsap.timeline({ repeat: -1 });
 let bot3_anim;
 let bot4_anim;
+
+// HTML element def
 let gameOverDiv = document.getElementById('gameOverText');
-let clockInterval;
-let ennemiesInterval;
-let score = 0;
+
+// Audio def
 let currentMusic = new Audio();
-
-let menuTheme = new Audio('assets/music/menu_theme.mp3');
-menuTheme.volume = 0.2;
-
 let soundtrack_1 = new Audio('assets/music/soundtrack_1.mp3');
 let soundtrack_2 = new Audio('assets/music/soundtrack_2.mp3');
 let soundtrack_3 = new Audio('assets/music/soundtrack_3.mp3');
 let soundtrack_4 = new Audio('assets/music/soundtrack_4.mp3');
+
+let menuTheme = new Audio('assets/music/menu_theme.mp3');
+menuTheme.volume = 0.2;
 
 let gemSFX = new Audio('assets/music/gem.mp3');
 gemSFX.volume = 0.1;
@@ -47,16 +53,21 @@ let wooshSFX = new Audio('assets/music/woosh.mp3');
 wooshSFX.loop = false;
 wooshSFX.volume = 0.1;
 
+// Starting game from menu
 const startFirstGame = () => {
 	playerPseudo = playerName.value;
 	startGame();
 	console.log(playerPseudo);
 };
 
+// Reset game
 const startGame = () => {
+	// Pause and reset music
 	menuTheme.pause();
 	currentMusic.pause();
 	currentMusic.currentTime = 0;
+
+	// Playing random music
 	let musicNumber = Math.floor(Math.random() * 4) + 1;
 	switch (musicNumber) {
 		case 1:
@@ -77,28 +88,35 @@ const startGame = () => {
 	currentMusic.play();
 	currentMusic.volume = 0.2;
 
+	// Hiding game over screen
 	control_screen.style.display = 'none';
 	gameOverScreen.style.display = 'none';
 	highScoreList.style.display = 'none';
 	chrono.style.display = 'block';
 
+	// Show score
 	scoreDiv.innerHTML = score;
 	scoreDiv.style.display = 'block';
 
+	// Reset game over screen to red
 	gameOverScreen.style.backgroundColor = 'rgba(206, 28, 22, 0.582)';
 	game_over_container.style.backgroundColor = 'rgb(167, 16, 16)';
 
+	// Reset player position
 	gsap.to('#player', {
 		startAt: { x: 0, y: 0, rotate: 0 }
 	});
 
+	// Start counter and colision detection
 	ennemiesInterval = setInterval(checkEnnemies, 500);
 	clockInterval = setInterval(counter, 1000);
 
+	// Randomly position gems
 	gem.style.display = 'block';
 	gem.style.top = Math.floor(Math.random() * 90) + 1 + '%';
 	gem.style.left = Math.floor(Math.random() * 90) + 1 + '%';
 
+	// Randomly position portals and fake portals
 	let portals = document.querySelectorAll('.portals');
 	portals.forEach((portal) => {
 		portal.style.top = Math.floor(Math.random() * 70) + 10 + '%';
@@ -112,10 +130,12 @@ const startGame = () => {
 		}
 	});
 
+	// Setting ramdom countdown
 	countdown = Math.floor(Math.random() * 19) + 9;
 	chrono.innerHTML = countdown;
 	playing = true;
 
+	// Starting bot animations
 	timeline_1.to('#bot_1', {
 		duration: 2,
 		y: -300
@@ -179,12 +199,14 @@ const startGame = () => {
 		repeat: -1
 	});
 
+	// Reseting bot position
 	timeline_1.play(0);
 	timeline_2.play(0);
 	bot3_anim.play(0);
 	bot4_anim.play(0);
 };
 
+// Displaying control menu and hiding main menu
 const showControls = () => {
 	starter_screen.style.display = 'none';
 	control_screen.style.display = 'flex';
@@ -192,19 +214,23 @@ const showControls = () => {
 	menuTheme.play();
 };
 
-let playing = false;
+// Game Over function
 const gameOver = (death) => {
+	// Stoping game logic
 	playing = false;
 	clearInterval(clockInterval);
 	clearInterval(ennemiesInterval);
 
+	// Mutating in database
 	const playerRef = db.collection('players').doc(playerPseudo);
 	playerRef
 		.get()
 		.then(function(doc) {
+			// Checking if player exists
 			if (doc.exists) {
 				const playerData = doc.data();
 
+				// Updating high score of player
 				if (score > playerData.score) {
 					playerRef
 						.set({
@@ -219,6 +245,7 @@ const gameOver = (death) => {
 						});
 				}
 			} else {
+				// Creating player in DB and saving score
 				playerRef
 					.set({
 						name: playerPseudo,
@@ -233,9 +260,10 @@ const gameOver = (death) => {
 			}
 		})
 		.catch(function(error) {
-			console.log('Error getting document:', error);
+			console.error('Error getting document:', error);
 		});
 
+	// Reseting portals
 	let portals = document.querySelectorAll('.portals');
 	portals.forEach((portal) => {
 		portal.classList.remove('fake_portal');
@@ -243,6 +271,7 @@ const gameOver = (death) => {
 		portal.src = 'assets/img/portal.png';
 	});
 
+	// Change game over screen
 	switch (death) {
 		case 'island':
 			score = 0;
@@ -279,7 +308,10 @@ const gameOver = (death) => {
 			break;
 	}
 
+	// Display game over screen
 	gameOverScreen.style.display = 'flex';
+
+	// Stoping bot animations and chrono
 	chrono.style.display = 'none';
 	timeline_1.pause();
 	timeline_2.pause();
@@ -287,6 +319,7 @@ const gameOver = (death) => {
 	bot4_anim.pause();
 };
 
+// Player mouvement
 const movePlayer = (e) => {
 	if (playing) {
 		switch (e.keyCode) {
@@ -323,9 +356,9 @@ const movePlayer = (e) => {
 		}
 	}
 };
-
 document.addEventListener('keydown', movePlayer);
 
+// Collision check function
 const checkCollision = (div1, div2) => {
 	let threshold = 12;
 	let rect1 = div1.getBoundingClientRect();
@@ -338,6 +371,7 @@ const checkCollision = (div1, div2) => {
 	);
 };
 
+// Game over trigger function
 let checkEnnemies = () => {
 	let bots = document.querySelectorAll('.bot');
 	bots.forEach((bot) => {
@@ -374,8 +408,10 @@ let checkEnnemies = () => {
 	}
 };
 
+// Reseting countdown
 let countdown = 0;
 
+// Countdown logic
 let counter = () => {
 	countdown -= 1;
 	chrono.innerHTML = countdown;
@@ -384,10 +420,12 @@ let counter = () => {
 	}
 };
 
-window.onload = (event) => {
+// Loader
+window.onload = () => {
 	loader_wrapper.style.display = 'none';
 };
 
+// Getting data from DB for score list
 const showResults = () => {
 	highScoreUl.textContent = '';
 	highScoreList.style.display = 'block';
@@ -401,6 +439,7 @@ const showResults = () => {
 	});
 };
 
+// Hide score list modal
 const closeHighScoreList = () => {
 	highScoreList.style.display = 'none';
 	highScoreUl.textContent = '';

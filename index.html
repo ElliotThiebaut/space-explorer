@@ -18,6 +18,8 @@
 </head>
 <body>
     <body>
+
+        <!-- Game Over screen -->
         <div id="gameOverScreen">
             <div id="game_over_container">
                 <p id="gameOverText">GAME OVER</p>
@@ -26,14 +28,18 @@
             
         </div>
 
+        <!-- High score modal -->
         <div id="highScoreList" onclick="closeHighScoreList()">
             <ul id="highScoreUl">
             </ul>
         </div>
 
+        <!-- Information button -->
         <div id="chrono"></div>
         <div id="scoreDiv"></div>
         <a id="highScoreButton" onclick="showResults()">High Score List</a>
+
+        <!-- Game Objects -->
         <img src="assets/img/player.png" alt="player" id="player">
         <img src="assets/img/bot.png" alt="bot" id="bot_1" class="bot">
         <img src="assets/img/bot.png" alt="bot" id="bot_2" class="bot">
@@ -46,15 +52,15 @@
         <img src="assets/img/asteroid_2.png" alt="island" id="island_2" class="island">
         <img src="assets/img/asteroid.png" alt="island" id="island_3" class="island">
 
-
+        <!-- Bot paths -->
         <svg width="372" height="328" viewBox="0 0 372 328" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg_1">
             <path id="path_3" d="M230 327C391.6 322.2 381.333 192.333 356 128C340 75.3333 274.4 -22.8 140 5.99999C5.59999 34.8 -6.66668 126.667 3.99999 169C12 223.667 68.4 331.8 230 327Z"/>
         </svg>
-
         <svg width="913" height="406" viewBox="0 0 913 406" fill="none" xmlns="http://www.w3.org/2000/svg" id="svg_2">
             <path id="path_4" d="M474 208C403.6 248.8 191.333 208.333 94 183C-34 155.877 -28 335 100 386C228 437 669 374 810 313C922.8 264.2 919.667 160 904 114C879 69.6667 800.8 -14.4 688 4C547 27 562 157 474 208Z"/>
         </svg>
 
+        <!-- Main menu -->
         <div id="starter_screen">
             <div class='wrap'>
                 <div class='tri'></div>
@@ -262,6 +268,7 @@
             <a onclick="showControls()" class="btn-flip" data-back="Lets go !" data-front="Wanna Play ?"></a>
         </div>
 
+        <!-- Controle screen -->
         <div id="control_screen">
             <p>Your goal is to escape</p>
             <p>Use the arrow keys to control your ship</p>
@@ -274,7 +281,7 @@
             <a id="startButton" onclick="startFirstGame()" class="btn-flip" data-back="Time to go..." data-front="Ready ?"></a>
         </div>
             
-
+        <!-- Loader -->
         <div id="loader_wrapper">
             <div class="loading"></div>
         </div>
@@ -286,12 +293,10 @@
 
 
         <!-- FIREBASE SDK -->
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
 
     </body>
-
 
     <script src="assets/app.js"></script>
 </body>
