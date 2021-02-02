@@ -24,7 +24,7 @@
 
 ## Show your support
 
-Give a ⭐️ if you lied this project!
+Give a ⭐️ if you liked this project!
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
